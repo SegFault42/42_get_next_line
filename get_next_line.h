@@ -6,7 +6,7 @@
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 18:26:48 by rabougue          #+#    #+#             */
-/*   Updated: 2016/01/27 12:27:46 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/01/30 11:23:22 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <unistd.h>
 
 #define BUFF_SIZE 3
-
 int get_next_line(int const fd, char ** line);
 
 #endif
