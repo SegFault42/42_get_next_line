@@ -3,25 +3,33 @@
 
 int	get_next_line(int const fd, char **line)
 {
-	char		buf[BUFF_SIZE];
-	static char		*content;
-	char			*str;
-	int len;
+	char	*content;
+	static char	*stat = NULL;
+	char	*buf;
+	int		ret;
+	int		len;
 
-	str = "\0";
-	while ((len = read(fd, buf, BUFF_SIZE)) > 0)
+	*line = "\0";
+	buf = ft_strnew(BUFF_SIZE); // Ne pas oublier de le free
+	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		ft_putnbr(len);
-		buf[len] = '\0';
 		if ((content = ft_strchr(buf, '\n')))
 		{
-			content++;
-			content = ft_strdup(content);
-			*line = ft_strjoin(str, buf);
-			return (1);
+			content[0] = '\0';
+			len = content - buf;
+			*line = ft_strjoin(*line, buf);
+			stat = ft_strdup(++content);
+			printf("*line = %s\nstat = %s\n", *line, stat);
+			*line = NULL;
 		}
-		str = ft_strjoin(str, buf);
-		ft_putendl(*line);
+		else
+			*line = ft_strjoin(*line, buf);
 	}
-	return (0);
+		/*ft_putendl(content);*/
+	return (ret);
 }
+
+/*3*/
+
+/*0	1	2	3	4	5	6*/
+/*a	b	c	\0	d	e	\0*/
