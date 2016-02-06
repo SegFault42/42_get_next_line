@@ -1,1 +1,1 @@
-gcc get_next_line.c main.c libft.a
+gcc -Wall -Wextra -Werror get_next_line.c main.c ./libft/libft.a

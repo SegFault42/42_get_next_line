@@ -21,9 +21,6 @@ int	open_file(char *file)
 
 int	main(int ac, char **av)
 {
-	int		fd;
-	char	*line;
-
 	if (ac == 2)
 		open_file(av[1]);
 	else

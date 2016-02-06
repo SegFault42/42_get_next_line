@@ -28,13 +28,13 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c\
 
 OBJS = $(SRC:.c=.o)
 
-HEAD = libft.h
+HEAD = ./includes/
 
 all: $(NAME)
 
 $(NAME):
 	@echo "\033[33mCompiling in .o ...\033[0m"
-	@gcc -Wall -Wextra -Werror -c $(SRC) $(HEAD)
+	@gcc -Wall -Wextra -Werror -c $(SRC) -I $(HEAD)
 	@echo "\033[33mCreating library ...\033[0m"
 	@ar rc $(NAME) $(OBJS)
 	@echo "\033[33mIndexing library ...\033[0m"
