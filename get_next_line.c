@@ -1,5 +1,4 @@
 #include "./get_next_line.h"
-#include "stdio.h"
 
 int	get_next_line(int const fd, char **line)
 {
@@ -10,26 +9,29 @@ int	get_next_line(int const fd, char **line)
 	int		len;
 	int		i = 1;
 
-	*line = "\0";
+	*line = NULL;
 	buf = ft_strnew(BUFF_SIZE); // Ne pas oublier de le free
+	if (stat != NULL)
+	{
+		*line = stat;
+		stat = NULL;
+	}
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
-		printf("ret = %d | ", ret);
 		if ((content = ft_strchr(buf, '\n')))
 		{
 			content[0] = '\0';
 			len = content - buf;
 			*line = ft_strjoin(*line, buf);
-			printf("*line = %s\n", *line);
 			stat = ft_strdup(++content);
-			return(ret);
-			*line = NULL;
+			printf("*line = %s | stat = %s\n", *line, stat);
+			return(1);
 		}
 		else
 			*line = ft_strjoin(*line, buf);
 		printf("Boucle %d | *line = %s\n", i++, *line );
 	}
-		/*printf("%lu", ft_strlen(buf));*/
-		/*printf("%s", *line);*/
+	if (*line != NULL)
+		return(1);
 	return (ret);
 }

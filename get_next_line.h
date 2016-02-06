@@ -16,8 +16,10 @@
 #include "./libft/libft.h"
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdio.h>
 
-#define BUFF_SIZE 900
+
+#define BUFF_SIZE 9
 
 int get_next_line(int const fd, char ** line);
 

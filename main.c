@@ -3,14 +3,19 @@
 int	open_file(char *file)
 {
 	int		fd;
+	int		i = 0;
+	int		j;
 	char	*line;
-
+	
 	if ((fd = open(file, O_RDONLY)) == -1)
 	{
 		ft_putendl("Cannot open the file !");
 		return (EXIT_FAILURE);
 	}
-	get_next_line(fd, &line);
+	while ((j = get_next_line(fd, &line)) == 1)
+		printf("%d : %s\n", ++i, line);
+	if (j == -1)
+	 printf("Erreur de lecture");
 	return (fd);
 }
 
