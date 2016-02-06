@@ -17,7 +17,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#define BUFF_SIZE 1
+#define BUFF_SIZE 900
 
 int get_next_line(int const fd, char ** line);
 

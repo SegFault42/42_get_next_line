@@ -17,17 +17,19 @@ int	get_next_line(int const fd, char **line)
 		printf("ret = %d | ", ret);
 		if ((content = ft_strchr(buf, '\n')))
 		{
-			ft_debug();
 			content[0] = '\0';
 			len = content - buf;
 			*line = ft_strjoin(*line, buf);
+			printf("*line = %s\n", *line);
 			stat = ft_strdup(++content);
+			return(ret);
 			*line = NULL;
 		}
 		else
 			*line = ft_strjoin(*line, buf);
 		printf("Boucle %d | *line = %s\n", i++, *line );
 	}
-		ft_putendl(*line);
+		/*printf("%lu", ft_strlen(buf));*/
+		/*printf("%s", *line);*/
 	return (ret);
 }
