@@ -6,7 +6,7 @@
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 21:47:55 by rabougue          #+#    #+#             */
-/*   Updated: 2015/11/26 10:40:33 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/02/09 22:24:21 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ size_t	ft_strclen(const char *s, int c)
 	size_t	i;
 
 	i = 0;
-
 	while (s[i] != c && s[i])
-		i++; 
+		i++;
 	if (!s[i])
 		return (0);
 	return (i);

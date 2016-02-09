@@ -6,7 +6,7 @@
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 10:24:39 by rabougue          #+#    #+#             */
-/*   Updated: 2016/01/25 15:13:03 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/02/09 22:19:14 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*strcpy_bsn(char *str)
 {
-	int i;
-	char *str2;
+	int		i;
+	char	*str2;
 
 	i = 0;
 	if (!(str2 = (char *)malloc(sizeof(char) * strlen(str) + 1)))

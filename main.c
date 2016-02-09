@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/09 17:19:31 by rabougue          #+#    #+#             */
+/*   Updated: 2016/02/09 22:12:21 by rabougue         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./get_next_line.h"
 
 int	open_file(char *file)
 {
 	int		fd;
-	int		i = 0;
 	int		j;
 	char	*line;
-	
+
+	j = 1;
 	if ((fd = open(file, O_RDONLY)) == -1)
 	{
-		ft_putendl("Cannot open the file !");
-		return (EXIT_FAILURE);
+		ft_putendl("Impossible d'ouvrir le fichier!");
+		return (-1);
 	}
-	while ((j = get_next_line(fd, &line)) == 1)
-		printf("%d : %s\n", ++i, line);
+	while ((get_next_line(fd, &line)) == j)
+		printf("%s\n", line);
 	if (j == -1)
-	 printf("Erreur de lecture");
+		printf("Erreur de lecture");
 	return (fd);
 }
 
@@ -25,7 +37,7 @@ int	main(int ac, char **av)
 		open_file(av[1]);
 	else
 	{
-		ft_putendl("Error !");
+		ft_putendl("Erreur !");
 		return (0);
 	}
 	return (0);
