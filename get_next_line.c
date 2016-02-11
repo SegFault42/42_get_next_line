@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/07 16:30:51 by rabougue          #+#    #+#             */
-/*   Updated: 2016/02/09 22:40:48 by rabougue         ###   ########.fr       */
+/*   Created: 2016/02/11 14:56:50 by rabougue          #+#    #+#             */
+/*   Updated: 2016/02/11 14:56:52 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,23 @@ static int	split_stat(char **line, char **stat)
 static int	read_file(char *buf, char **line, char **stat)
 {
 	char	*content;
+	char	*tmp;
 
 	if ((content = ft_strchr(buf, '\n')))
 	{
 		content[0] = '\0';
-		*line = ft_strjoin(*line, buf);
+		tmp = ft_strjoin(*line, buf);
+		free(*line);
+		*line = tmp;
 		if (ft_strlen(++content))
 			*stat = ft_strdup(content);
 	}
 	else
-		*line = ft_strjoin(*line, buf);
+	{
+		tmp = ft_strjoin(*line, buf);
+		free(*line);
+		*line = tmp;
+	}
 	return (content ? 1 : 0);
 }
 

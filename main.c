@@ -6,7 +6,7 @@
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 17:19:31 by rabougue          #+#    #+#             */
-/*   Updated: 2016/02/09 22:12:21 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/02/11 14:25:35 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ int	main(int ac, char **av)
 	{
 		ft_putendl("Erreur !");
 		return (0);
+	}
+	while (42)
+	{
 	}
 	return (0);
 }
