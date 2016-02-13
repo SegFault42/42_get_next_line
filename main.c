@@ -40,8 +40,5 @@ int	main(int ac, char **av)
 		ft_putendl("Erreur !");
 		return (0);
 	}
-	while (42)
-	{
-	}
 	return (0);
 }
