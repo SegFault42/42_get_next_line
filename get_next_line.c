@@ -61,20 +61,20 @@ static int	read_file(char *buf, char **line, char **stat)
 
 int			get_next_line(int const fd, char **line)
 {
-	static char	*stat = NULL;
+	static char	*stat[256] = {NULL};
 	char		*buf;
 	int			ret;
 
-	if (fd < 0 || line == NULL || BUFF_SIZE <= 0)
+	if (fd < 0 || line == NULL || BUFF_SIZE <= 0 || fd > 256) 
 		return (-1);
 	*line = NULL;
 	buf = ft_strnew(BUFF_SIZE);
-	if (split_stat(line, &stat) == 1)
+	if (split_stat(line, &stat[fd]) == 1)
 		return (1);
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
-		if (read_file(buf, line, &stat) == 1)
+		if (read_file(buf, line, &stat[fd]) == 1)
 			break ;
 	}
 	if (ret > 0 || *line)
