@@ -65,7 +65,7 @@ int			get_next_line(int const fd, char **line)
 	char		*buf;
 	int			ret;
 
-	if (fd < 0 || line == NULL || BUFF_SIZE <= 0 || fd > 256) 
+	if (fd < 0 || line == NULL || BUFF_SIZE <= 0 || fd > 256)
 		return (-1);
 	*line = NULL;
 	buf = ft_strnew(BUFF_SIZE);
@@ -77,6 +77,7 @@ int			get_next_line(int const fd, char **line)
 		if (read_file(buf, line, &stat[fd]) == 1)
 			break ;
 	}
+	free(buf);
 	if (ret > 0 || *line)
 		return (1);
 	return (ret);
