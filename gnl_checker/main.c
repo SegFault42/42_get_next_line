@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../get_next_line.h"
+#include <fcntl.h>
 
 int	open_file(char *file)
 {
@@ -19,19 +20,17 @@ int	open_file(char *file)
 	char	*line;
 
 	j = 1;
-	
-	fd = open(file, O_RDONLY);
 
-	/*if ((fd = open(file, O_RDONLY)) == -1)*/
-	/*{*/
-		/*ft_putendl("Impossible d'ouvrir le fichier!");*/
-		/*return (-1);*/
-	/*}*/
+	if ((fd = open(file, O_RDONLY)) == -1)
+	{
+		ft_putendl("Impossible d'ouvrir le fichier!");
+		return (-1);
+	}
 	while ((get_next_line(fd, &line)) == j)
 		ft_putendl(line);
 	if (j == -1)
 		ft_putendl("Erreur de lecture");
-	ft_putstr("retour de get_next_line = ");
+	ft_putstr("\033[31mretour de get_next_line = \033[0m");
 	ft_putnbr(get_next_line(fd, &line));
 	return (fd);
 }

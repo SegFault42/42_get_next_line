@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../get_next_line.h"
+#include <fcntl.h>
 
 int	open_file(char *file)
 {
@@ -29,7 +30,7 @@ int	open_file(char *file)
 		ft_putendl(line);
 	if (j == -1)
 		ft_putendl("Erreur de lecture");
-	ft_putstr("retour de get_next_line = ");
+	ft_putstr("\033[31mretour de get_next_line = \033[0m");
 	ft_putnbr(get_next_line(42, &line));
 	return (fd);
 }
