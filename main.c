@@ -33,12 +33,13 @@ int	open_file(char *file)
 
 int	main(int ac, char **av)
 {
-	if (ac == 2)
+	char	*line;
+	int j = 1;
+
+	if (ac == 1)
+		while ((get_next_line(0, &line)) == j)
+			printf("%s\n", line);
+	else if (ac == 2)
 		open_file(av[1]);
-	else
-	{
-		ft_putendl("Erreur !");
-		return (0);
-	}
 	return (0);
 }
