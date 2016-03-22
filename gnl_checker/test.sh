@@ -55,8 +55,26 @@ make -C ../libft/ fclean && make -C ../libft/
 echo "\033[32mCompilation gnl OK\033[0m"
 gcc -Wall -Wextra -Werror -o gnl ../main.c ../get_next_line.c ../libft/libft.a
 
-echo "\033[33m\nVerification fonction interdite\033[0m"
+echo "\033[33m\n----------Verification fonction interdite--------------\033[0m"
 nm -j ./gnl | cut -c 2-
 
-echo "\033[36m\n- Lire et retourner une ligne de 8 caractères terminée par un '\ n' inclus depuis l'entrée standard.\n\033[0m"
-"echo -n "01234657" | ./gnl"
+#echo "\033[36m\n- Lire et retourner une ligne de 8 caractères terminée par un '\ n' inclus depuis l'entrée standard.\n\033[0m"
+#echo -n "01234657" | ./gnl
+
+echo "\033[33m\n--------------------Tests basiques-----------------------\033[0m"
+
+echo "\033[36m\n- Lire et retourner une ligne de 8 caractères terminée par un '\ n' inclus depuis un fichier.\033[0m"
+./gnl fichiers_test/04_1_ligne_8_char_\\n | cat -e
+echo "\033[36m\n- Lire et retourner deux lignes de 8 caractères terminée par un '\ n' inclus depuis un fichier.\033[0m"
+./gnl fichiers_test/05_2_ligne_8_char_\\n | cat -e
+echo "\033[36m\n- Lire et retourner un nombre quelconque de lignes de 8 caractères terminées par un '\ n' inclus depuis l'entrée standard.\033[0m"
+./gnl fichiers_test/06_rand_ligne_8_char_\\n | cat -e
+
+echo "\033[33m\n--------------------Tests intermédiaires-----------------------\033[0m"
+
+echo "\033[36m\n- Lire et retourner une ligne de 16 caractères terminée par un '\ n' inclus depuis un fichier.\033[0m"
+./gnl fichiers_test/10_1_ligne_16_char_\\n | cat -e
+echo "\033[36m\n- Lire et retourner deux lignes de 16 caractères terminée par un '\ n' inclus depuis un fichier.\033[0m"
+./gnl fichiers_test/11_2_ligne_16_char_\\n | cat -e
+echo "\033[36m\n- Lire et retourner un nombre quelconque de lignes de 16 caractères terminées par un '\ n' inclus depuis l'entrée standard.\033[0m"
+./gnl fichiers_test/12_rand_ligne_16_char_\\n | cat -e

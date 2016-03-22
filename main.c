@@ -25,9 +25,9 @@ int	open_file(char *file)
 		return (-1);
 	}
 	while ((get_next_line(fd, &line)) == j)
-		printf("%s\n", line);
+		ft_putendl(line);
 	if (j == -1)
-		printf("Erreur de lecture");
+		ft_putendl("Erreur de lecture");
 	return (fd);
 }
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		while ((get_next_line(0, &line)) == j)
-			printf("%s\n", line);
+			ft_putendl(line);
 	else if (ac == 2)
 		open_file(av[1]);
 	return (0);
