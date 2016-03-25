@@ -6,7 +6,7 @@
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 17:19:31 by rabougue          #+#    #+#             */
-/*   Updated: 2016/02/11 14:25:35 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/03/25 15:33:04 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	open_file(char *file)
 	char	*line;
 
 	j = 1;
-
 	if ((fd = open(file, O_RDONLY)) == -1)
 	{
 		ft_putendl("impossible d'ouvrir le fichier!");
@@ -30,16 +29,18 @@ int	open_file(char *file)
 		ft_putendl(line);
 	if (j == -1)
 		ft_putendl("Erreur de lecture");
-	ft_putstr("\033[31mretour de get_next_line = \033[0m");
+	ft_putstr("retour de get_next_line = ");
 	ft_putnbr(get_next_line(42, &line));
+	ft_putchar('\n');
 	return (fd);
 }
 
 int	main(int ac, char **av)
 {
 	char	*line;
-	int j = 1;
+	int		j;
 
+	j = 1;
 	if (ac == 1)
 		while ((get_next_line(0, &line)) == j)
 			ft_putendl(line);
