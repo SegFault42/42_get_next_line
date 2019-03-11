@@ -6,27 +6,34 @@
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 14:56:50 by rabougue          #+#    #+#             */
-/*   Updated: 2016/02/11 14:56:52 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/12/18 17:36:09 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./get_next_line.h"
+#include "./includes/libft.h"
 
 static int	split_stat(char **line, char **stat)
 {
 	char	*content2;
+	char	*tmp = NULL;
 	int		len;
 
+	content2 = NULL;
 	if (!(*stat))
 		return (0);
 	if ((content2 = ft_strchr(*stat, '\n')))
 	{
 		len = content2 - *stat;
 		*line = ft_strsub(*stat, 0, len);
-		if (ft_strlen(++content2))
+		if (ft_strlen(++content2)) {
+			tmp = *stat;
 			*stat = ft_strdup(content2);
-		else
+			free(tmp);
+		}
+		else {
+			free(*stat);
 			*stat = NULL;
+		}
 	}
 	else if (ft_strlen(*stat))
 	{
@@ -70,7 +77,10 @@ int			get_next_line(int const fd, char **line)
 	*line = NULL;
 	buf = ft_strnew(BUFF_SIZE);
 	if (split_stat(line, &stat[fd]) == 1)
+	{
+		free(buf);
 		return (1);
+	}
 	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		buf[ret] = '\0';
